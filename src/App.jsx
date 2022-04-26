@@ -1,7 +1,15 @@
+import AppRouter from "./router/AppRouter";
+import { BrowserRouter } from 'react-router-dom';
+import ResponsiveAppBar from './components/Header/ResponsiveAppBar'
+import routes from "./router/routes";
+
 export default function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">APP</h1>
+      <BrowserRouter>
+        <ResponsiveAppBar pages={routes.filter(route => !route.isProtected).map(route => route.name)} />
+        <AppRouter />
+      </BrowserRouter>
     </>
   );
 }
